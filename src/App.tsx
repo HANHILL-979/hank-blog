@@ -3,7 +3,8 @@ import TopNav from './components/TopNav';
 import SideNav from './components/SideNav';
 import Footer from './components/Footer';
 import Home from './views/Home';
-import Article from './views/Article';
+import EssayPortal from './views/EssayPortal';
+import TweetDetail from './views/TweetDetail';
 import Journal from './views/Journal';
 import Collections from './views/Collections';
 import Categories from './views/Categories';
@@ -19,7 +20,8 @@ export default function App() {
           <main className="flex-1 min-h-screen p-8 lg:p-12 overflow-hidden">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/essays" element={<Article />} />
+              <Route path="/essays" element={<EssayPortal />} />
+              <Route path="/essay/:id" element={<TweetDetail />} />
               <Route path="/journal" element={<Journal />} />
               <Route path="/trending" element={<Collections />} />
               <Route path="/collections" element={<Categories />} />

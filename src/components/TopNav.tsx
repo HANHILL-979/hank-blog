@@ -8,10 +8,10 @@ export default function TopNav() {
         <div className="flex items-center gap-12">
           <Link to="/" className="text-xl font-bold tracking-tighter text-zinc-900">Curator</Link>
           <nav className="hidden md:flex items-center gap-8 text-sm">
-            <Link className="text-zinc-900 font-semibold border-b border-zinc-900 pb-1" to="/essays">Essays</Link>
-            <Link className="text-zinc-500 hover:text-zinc-900 transition-colors" to="/design">Design</Link>
-            <Link className="text-zinc-500 hover:text-zinc-900 transition-colors" to="/archive">Archive</Link>
-            <Link className="text-zinc-500 hover:text-zinc-900 transition-colors" to="/about">About</Link>
+            <Link className="text-zinc-500 hover:text-zinc-900 transition-colors" to="/essays">Essays</Link>
+            <Link className="text-zinc-500 hover:text-zinc-900 transition-colors" to="/trending">Archive</Link>
+            <Link className="text-zinc-500 hover:text-zinc-900 transition-colors" to="/collections">Collections</Link>
+            <Link className="text-zinc-500 hover:text-zinc-900 transition-colors" to="/profile">About</Link>
           </nav>
         </div>
         <div className="flex items-center gap-4">

@@ -24,6 +24,7 @@ export default function SideNav() {
       
       <nav className="flex flex-col gap-1">
         <NavItem to="/" icon={<LayoutGrid className="w-4 h-4" />} label="Home" active={location.pathname === '/'} />
+        <NavItem to="/essays" icon={<Bookmark className="w-4 h-4" />} label="Essays" active={location.pathname === '/essays'} />
         <NavItem to="/journal" icon={<Sparkles className="w-4 h-4" />} label="Journal" active={location.pathname === '/journal'} />
         <NavItem to="/trending" icon={<TrendingUp className="w-4 h-4" />} label="Archive" active={location.pathname === '/trending'} />
         <NavItem to="/collections" icon={<Bookmark className="w-4 h-4" />} label="Collections" active={location.pathname === '/collections'} />
