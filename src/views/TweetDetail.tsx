@@ -13,7 +13,11 @@ import {
   Heart, 
   MessageSquare,
   Settings as SettingsIcon,
-  HelpCircle
+  HelpCircle,
+  ArrowLeft,
+  Bookmark,
+  Download,
+  Copy
 } from 'lucide-react';
 
 export default function TweetDetail() {
@@ -34,162 +38,159 @@ export default function TweetDetail() {
   if (!post) return <div className="pt-32 px-12">Post not found</div>;
 
   return (
-    <div className="min-h-screen bg-[#f9f9fb] flex">
-      {/* SideNavBar */}
-      <aside className="fixed left-0 top-16 h-[calc(100vh-64px)] w-72 bg-white border-r border-zinc-100 p-8 hidden lg:flex flex-col gap-y-8 z-40">
-        <div>
-          <h3 className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 mb-2 font-bold">Reading Progress</h3>
-          <p className="text-[#2d3338] font-bold text-lg">12 min read</p>
-          <div className="w-full bg-zinc-100 h-1.5 mt-4 rounded-full overflow-hidden">
-            <motion.div 
-              className="bg-[#2d3338] h-full"
-              style={{ width: `${scrollProgress}%` }}
-            />
-          </div>
-        </div>
+    <div className="min-h-screen bg-[#f5f5f7] antialiased">
+      {/* Progress Bar */}
+      <div className="fixed top-16 left-0 w-full h-1 z-50 bg-black/5">
+        <motion.div 
+          className="bg-[#1d1d1f] h-full"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
 
-        <nav className="flex flex-col gap-2">
-          {[
-            { icon: Layout, label: 'Introduction', active: true },
-            { icon: BarChart3, label: 'Analysis', active: false },
-            { icon: Sparkles, label: 'Synthesis', active: false },
-            { icon: CheckCircle2, label: 'Conclusion', active: false },
-          ].map((item) => (
-            <button 
-              key={item.label}
-              className={`flex items-center gap-4 p-4 rounded-xl transition-all ${
-                item.active ? 'bg-zinc-100 text-[#2d3338] font-bold' : 'text-zinc-400 hover:bg-zinc-50 hover:text-zinc-600'
-              }`}
-            >
-              <item.icon className="w-5 h-5" />
-              <span className="text-sm tracking-tight">{item.label}</span>
-            </button>
-          ))}
-        </nav>
+      <main className="max-w-4xl mx-auto pt-32 pb-24 px-6">
+        {/* Back Navigation */}
+        <Link to="/essays" className="inline-flex items-center gap-2 text-[#86868b] hover:text-[#1d1d1f] transition-colors mb-12 group">
+          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+          <span className="text-sm font-medium">Back to Essays</span>
+        </Link>
 
-        <div className="mt-auto flex flex-col gap-4">
-          <button className="bg-gradient-to-br from-[#5f5e60] to-[#2d3338] text-white py-4 px-6 rounded-2xl flex items-center justify-center gap-3 text-sm font-bold shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1">
-            <CreditCard className="w-4 h-4" />
-            Generate Tweet Card
-          </button>
+        {/* Article Header */}
+        <header className="mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-3 mb-6"
+          >
+            <span className="bg-[#1d1d1f] text-white text-[10px] font-bold tracking-[0.05em] uppercase px-2 py-1 rounded-md">{post.category}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-black/10"></span>
+            <span className="text-[#86868b] text-[10px] font-bold tracking-[0.05em] uppercase">{post.date}</span>
+          </motion.div>
           
-          <div className="pt-6 mt-4 border-t border-zinc-100 flex flex-col gap-2">
-            <button className="flex items-center gap-4 p-2 text-zinc-400 hover:text-zinc-900 transition-colors">
-              <SettingsIcon className="w-4 h-4" />
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Settings</span>
-            </button>
-            <button className="flex items-center gap-4 p-2 text-zinc-400 hover:text-zinc-900 transition-colors">
-              <HelpCircle className="w-4 h-4" />
-              <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Help</span>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-extrabold tracking-[-0.022em] text-[#1d1d1f] leading-[1.1] mb-10"
+          >
+            {post.title}
+          </motion.h1>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="flex items-center gap-6"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center overflow-hidden">
+                <img src="https://lh3.googleusercontent.com/a/ACg8ocL_p_v_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p=s96-c" alt="Author" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <p className="text-sm font-bold text-[#1d1d1f]">Huang Qihong</p>
+                <p className="text-[11px] text-[#86868b] font-medium uppercase tracking-wider">The Curator</p>
+              </div>
+            </div>
+            <div className="h-8 w-[1px] bg-black/5"></div>
+            <div className="flex gap-4">
+              <button className="text-[#86868b] hover:text-[#1d1d1f] transition-colors"><Share2 className="w-4 h-4" /></button>
+              <button className="text-[#86868b] hover:text-[#1d1d1f] transition-colors"><Bookmark className="w-4 h-4" /></button>
+            </div>
+          </motion.div>
+        </header>
+
+        {/* Hero Image */}
+        <motion.figure 
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 }}
+          className="mb-16 -mx-6 md:-mx-12 overflow-hidden rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.1)]"
+        >
+          <img 
+            src={post.image} 
+            alt={post.title}
+            className="w-full aspect-[16/9] object-cover"
+            referrerPolicy="no-referrer"
+          />
+        </motion.figure>
+
+        {/* Content */}
+        <article className="max-w-3xl mx-auto mb-24">
+          <div className="text-[#1d1d1f] text-lg md:text-xl leading-[1.6] font-normal space-y-8 tracking-[-0.011em]">
+            {post.content.split('\n\n').map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          </div>
+        </article>
+
+        {/* Luminous Canvas Section */}
+        <section className="bg-white rounded-[3rem] p-8 md:p-16 mb-24 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.04)] border border-black/5">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">
+            <div>
+              <h2 className="text-3xl font-bold tracking-[-0.022em] text-[#1d1d1f] mb-2">Curate the Moment</h2>
+              <p className="text-[#86868b] text-base font-normal">Transform this insight into a Luminous Canvas card.</p>
+            </div>
+            <button className="bg-[#f5f5f7] text-[#1d1d1f] px-8 py-4 rounded-2xl flex items-center gap-3 text-sm font-bold hover:bg-zinc-200 transition-all">
+              <Share2 className="w-4 h-4" />
+              Share Inspiration
             </button>
           </div>
-        </div>
-      </aside>
 
-      {/* Main Content */}
-      <main className="flex-1 ml-0 lg:ml-72 pt-32 pb-24 px-6 md:px-12 lg:px-24">
-        <div className="max-w-3xl mx-auto">
-          {/* Article Header */}
-          <header className="mb-20">
-            <div className="mb-10 flex items-center gap-6">
-              <span className="bg-zinc-900 text-white text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1.5 rounded-md">{post.category}</span>
-              <span className="text-zinc-400 text-[10px] font-bold tracking-[0.2em] uppercase">{post.date}</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-[#2d3338] leading-[1.05] mb-10">
-              {post.title}.
-            </h1>
-            <p className="text-2xl text-zinc-500 font-light italic leading-relaxed border-l-4 border-zinc-200 pl-10 py-2">
-              "Design is not just what it looks like and feels like. Design is how it works, and how it breathes within the landscape."
-            </p>
-          </header>
-
-          {/* Hero Image */}
-          <figure className="mb-20 -mx-6 md:-mx-12 lg:-mx-20 overflow-hidden rounded-3xl shadow-2xl">
-            <img 
-              src={post.image} 
-              alt={post.title}
-              className="w-full aspect-[21/9] object-cover hover:scale-105 transition-transform duration-1000"
-              referrerPolicy="no-referrer"
-            />
-          </figure>
-
-          {/* Content */}
-          <article className="prose prose-zinc prose-xl max-w-none mb-32">
-            <div className="text-zinc-600 leading-[1.8] font-light space-y-10">
-              {post.content.split('\n\n').map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
-            </div>
-          </article>
-
-          {/* Luminous Canvas Section */}
-          <section className="bg-zinc-100 rounded-[3rem] p-10 md:p-20 mb-32">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 mb-16">
-              <div>
-                <h2 className="text-4xl font-bold tracking-tight text-[#2d3338] mb-4">Curate the Moment</h2>
-                <p className="text-zinc-500 text-lg font-light">Transform this insight into a Luminous Canvas card for your social gallery.</p>
+          {/* Luminous Canvas Card - Apple Style */}
+          <div className="relative group max-w-xl mx-auto">
+            <div className="absolute -inset-4 bg-gradient-to-r from-zinc-100 to-zinc-200 rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+            <div className="relative bg-[#fbfbfd] rounded-[2.5rem] overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.12)] border border-black/5 flex flex-col min-h-[400px]">
+              {/* Visual Side */}
+              <div className="w-full h-48 relative">
+                <img 
+                  src={post.image} 
+                  className="absolute inset-0 w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-black/5 mix-blend-multiply"></div>
               </div>
-              <button className="bg-white text-[#2d3338] px-10 py-5 rounded-2xl flex items-center gap-4 text-sm font-bold shadow-sm hover:shadow-xl transition-all">
-                <Share2 className="w-5 h-5" />
-                Share Inspiration
-              </button>
-            </div>
-
-            {/* Luminous Canvas Card */}
-            <div className="relative group max-w-2xl mx-auto">
-              <div className="absolute -inset-2 bg-gradient-to-r from-zinc-200 to-zinc-400 rounded-[2.5rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-              <div className="relative bg-white/80 backdrop-blur-3xl rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/50 flex flex-col md:flex-row min-h-[450px]">
-                {/* Visual Side */}
-                <div className="w-full md:w-1/2 relative h-64 md:h-auto">
-                  <img 
-                    src={post.image} 
-                    className="absolute inset-0 w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-zinc-900/10 mix-blend-multiply"></div>
+              {/* Content Side */}
+              <div className="p-10 flex flex-col justify-between flex-grow">
+                <div className="flex justify-between items-start">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-[#1d1d1f] flex items-center justify-center">
+                      <Sparkles className="text-white w-4 h-4" />
+                    </div>
+                    <div className="text-[10px] font-bold tracking-[0.1em] uppercase text-[#1d1d1f]">The Curator</div>
+                  </div>
+                  <Quote className="text-black/5 w-8 h-8" />
                 </div>
-                {/* Content Side */}
-                <div className="w-full md:w-1/2 p-12 flex flex-col justify-between">
-                  <div className="flex justify-between items-start">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center">
-                        <Sparkles className="text-white w-5 h-5" />
-                      </div>
-                      <div className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-900">The Curator</div>
-                    </div>
-                    <Quote className="text-zinc-200 w-10 h-10" />
-                  </div>
-                  
-                  <div className="my-10">
-                    <blockquote className="text-2xl md:text-3xl font-bold leading-tight text-[#2d3338] tracking-tight mb-6">
-                      "{post.excerpt}"
-                    </blockquote>
-                    <p className="text-[10px] text-zinc-400 font-bold tracking-[0.2em] uppercase">
-                      {post.title}
-                    </p>
-                  </div>
+                
+                <div className="my-8">
+                  <blockquote className="text-xl md:text-2xl font-bold leading-tight text-[#1d1d1f] tracking-[-0.022em] mb-4">
+                    "{post.excerpt}"
+                  </blockquote>
+                  <p className="text-[10px] text-[#86868b] font-bold tracking-[0.05em] uppercase">
+                    {post.title}
+                  </p>
+                </div>
 
-                  <div className="flex items-center justify-between pt-10 border-t border-zinc-100">
-                    <span className="text-[10px] text-zinc-300 font-mono tracking-widest uppercase">ID: {post.id.toUpperCase()}</span>
-                    <div className="flex gap-6">
-                      <Heart className="w-5 h-5 text-zinc-300 hover:text-red-400 transition-colors cursor-pointer" />
-                      <MessageSquare className="w-5 h-5 text-zinc-300 hover:text-blue-400 transition-colors cursor-pointer" />
-                    </div>
+                <div className="flex items-center justify-between pt-8 border-t border-black/5">
+                  <span className="text-[10px] text-[#86868b]/40 font-mono tracking-widest uppercase">ID: {post.id.toUpperCase()}</span>
+                  <div className="flex gap-4">
+                    <Heart className="w-4 h-4 text-[#86868b] hover:text-red-500 transition-colors cursor-pointer" />
+                    <MessageSquare className="w-4 h-4 text-[#86868b] hover:text-blue-500 transition-colors cursor-pointer" />
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="mt-16 flex flex-wrap justify-center gap-6">
-              <button className="bg-[#2d3338] text-white px-12 py-5 rounded-2xl text-sm font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all">
-                Download Card
-              </button>
-              <button className="bg-white text-[#2d3338] px-12 py-5 rounded-2xl text-sm font-bold border border-zinc-100 hover:bg-zinc-50 transition-all">
-                Copy Link
-              </button>
-            </div>
-          </section>
-        </div>
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
+            <button className="bg-[#1d1d1f] text-white px-10 py-4 rounded-2xl text-sm font-bold shadow-lg hover:bg-black transition-all flex items-center gap-2">
+              <Download className="w-4 h-4" />
+              Download Card
+            </button>
+            <button className="bg-white text-[#1d1d1f] px-10 py-4 rounded-2xl text-sm font-bold border border-black/10 hover:bg-[#f5f5f7] transition-all flex items-center gap-2">
+              <Copy className="w-4 h-4" />
+              Copy Link
+            </button>
+          </div>
+        </section>
       </main>
     </div>
   );
