@@ -23,8 +23,8 @@ export default function TopNav() {
               type="text"
             />
           </div>
-          <Link to="/profile" className="text-zinc-800 p-2 hover:bg-zinc-100/50 rounded-full active:scale-[0.98] transition-transform">
-            <User className="w-5 h-5" />
+          <Link to="/profile" className="p-0.5 hover:bg-zinc-100 rounded-full active:scale-[0.98] transition-transform overflow-hidden border border-zinc-200">
+            <img src="/avatar.jpg" alt="Profile" className="w-7 h-7 rounded-full object-cover" />
           </Link>
         </div>
       </div>

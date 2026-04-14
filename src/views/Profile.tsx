@@ -28,7 +28,7 @@ export default function Profile() {
             <div className="aspect-[4/5] rounded-xl overflow-hidden bg-zinc-100 grayscale hover:grayscale-0 transition-all duration-700">
               <img 
                 className="w-full h-full object-cover" 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB61iG6Z2_ptTI2l2wfdgxchhB6St7dQTQ2TZyjNd237T-AqathyjTpw0Um7raCNVY3XqoH52v5L-28XAjuGjPjh1RSDSA2cgFTMiwUHlKJNp6k3Rqz8qzi13MALzq1uLE7HxkdWpH5xQDyeQXNM8Tzgb3-wz1FWYQMs61icl3uyIGzXWMmwgnCl3fwAc6CShA2DvYPM2xL24o9ulpyl7nPpzJjps1dfv2bT1brNyG5i_QWROXO9I2JGTjXZUh8D0hqmGl5Ych9iC0"
+                src="/avatar.jpg"
                 referrerPolicy="no-referrer"
               />
             </div>

@@ -22,7 +22,7 @@ export default function Journal() {
           <div className="w-12 h-12 rounded-full overflow-hidden bg-zinc-100">
             <img 
               className="w-full h-full object-cover" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPSb4upAB9xyHnVvNsdlavymUgmv7BuYRw3XOdv9OfECwADYjruHRS1oPtB6cEjp-teW2ks3SAWhJc56zxz-srp1Oef5NIXEYk450rNbE8QPuGdpwa_EpmPGvHtzdreiObXZpKlQ7RyD-iv_Xk00QzlyWvk7S9eBdcOKHvpz9_jDiwrYCsRdWp8gdgupuGxnwPCZZLjlLIycbZwjAWB9r9a4Vxl21N-1BEvpNg9zxQLKmOam4THFbyGwrOM6_y3QOnnD0KrgJNGQY"
+              src="/avatar.jpg"
               referrerPolicy="no-referrer"
             />
           </div>

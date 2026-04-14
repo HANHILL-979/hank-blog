@@ -52,7 +52,7 @@ export default function Article() {
               <img 
                 alt="Author" 
                 className="w-full h-full object-cover" 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvKaxFWTGMZjhGuc2-PbJ_hjwhRbdflqVEBZ34NDdFhJEltKeSEX8EJTZ3-9Yrn8Di_h0hQoq9mry505SUCWb7u8OxTPPBYWl3f8FfT_L6lglxqgal6REY8wGWLFFHnuvrHCKJOyGaX_N8j1FjiB-9bsay86nWa1KjTVfeMPWYD4CBpZXnO7s124vQYu7pReQYdQWeNl7AKqOE-2OiiKkuXZLtNNxVn48LBSFIWl5j-lJCpun5Zad-W9M_pOttS59o3dB6LFDv6ZQ"
+                src="/avatar.jpg"
                 referrerPolicy="no-referrer"
               />
             </div>

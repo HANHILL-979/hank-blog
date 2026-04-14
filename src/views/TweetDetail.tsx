@@ -82,8 +82,8 @@ export default function TweetDetail() {
             className="flex items-center gap-6"
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center overflow-hidden">
-                <img src="https://lh3.googleusercontent.com/a/ACg8ocL_p_v_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p_p=s96-c" alt="Author" className="w-full h-full object-cover" />
+              <div className="w-10 h-10 rounded-full bg-zinc-200 flex items-center justify-center overflow-hidden ring-2 ring-white shadow-sm">
+                <img src="/avatar.jpg" alt="Author" className="w-full h-full object-cover" />
               </div>
               <div>
                 <p className="text-sm font-bold text-[#1d1d1f]">Huang Qihong</p>
@@ -114,16 +114,27 @@ export default function TweetDetail() {
         </motion.figure>
 
         {/* Content */}
-        <article className="max-w-3xl mx-auto mb-24">
+        <motion.article 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="max-w-3xl mx-auto mb-24"
+        >
           <div className="text-[#1d1d1f] text-lg md:text-xl leading-[1.6] font-normal space-y-8 tracking-[-0.011em]">
             {post.content.split('\n\n').map((para, i) => (
               <p key={i}>{para}</p>
             ))}
           </div>
-        </article>
+        </motion.article>
 
         {/* Luminous Canvas Section */}
-        <section className="bg-white rounded-[3rem] p-8 md:p-16 mb-24 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.04)] border border-black/5">
+        <motion.section 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-[3rem] p-8 md:p-16 mb-24 shadow-[0_4px_24px_-1px_rgba(0,0,0,0.04)] border border-black/5"
+        >
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">
             <div>
               <h2 className="text-3xl font-bold tracking-[-0.022em] text-[#1d1d1f] mb-2">Curate the Moment</h2>
@@ -189,6 +200,24 @@ export default function TweetDetail() {
               <Copy className="w-4 h-4" />
               Copy Link
             </button>
+          </div>
+        </motion.section>
+
+        {/* Related Essays */}
+        <section className="mb-24">
+          <h3 className="text-2xl font-bold tracking-[-0.022em] text-[#1d1d1f] mb-8">Continue Reading</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {posts.filter(p => p.id !== post.id).slice(0, 2).map((related) => (
+              <Link key={related.id} to={`/essay/${related.id}`} className="group bg-white rounded-[2rem] p-6 border border-black/5 shadow-sm hover:shadow-xl transition-all duration-500 flex gap-6 items-center">
+                <div className="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0">
+                  <img src={related.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-[#86868b] uppercase tracking-wider mb-1 block">{related.category}</span>
+                  <h4 className="text-lg font-bold text-[#1d1d1f] leading-tight group-hover:text-black transition-colors">{related.title}</h4>
+                </div>
+              </Link>
+            ))}
           </div>
         </section>
       </main>

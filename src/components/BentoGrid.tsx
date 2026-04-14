@@ -59,7 +59,7 @@ export default function BentoGrid() {
               <div className="w-8 h-8 rounded-full border-2 border-zinc-100 bg-zinc-200 overflow-hidden">
                 <img 
                   alt="Author" 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGZJgciO5wnJOT4ODdH2KDag3ziAj4DnNEuJuL4ELDP4MbkPjnJWVgTj4kekR4D6GnHjyegVuAnUw1PPoZkk6ZpJCEL0T9Q_BH_Snl4ABKrDJeTVCYP2Ep2ApJwWSV9HYU3_M4wl71TvIsUX5YOGsq5B-5UoNVQxYwUHP1ZCYfv33Dnesjoj0PyMgitGRadVixCTVth3h6zx-2icsCNP68yAbxPaFAJJJKZswZ5mj8LF1dM_mLsY3GpHdCbHYnxK_dOFsSZHL4PA"
+                  src="/avatar.jpg"
                   referrerPolicy="no-referrer"
                 />
               </div>
